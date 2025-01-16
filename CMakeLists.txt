@@ -8,6 +8,8 @@ find_package(sdl2_image REQUIRED)
 
 add_executable(pingpong main.cpp
         GameClass.cpp
-        GameClass.h)
+        GameClass.h
+        Ball.cpp
+        Ball.h)
 
 target_link_libraries(pingpong PRIVATE SDL2::SDL2 SDL2::SDL2main SDL2_image::SDL2_image)

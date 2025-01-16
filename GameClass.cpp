@@ -37,6 +37,21 @@ bool GameClass::init(std::string title, int width, int height) {
 
     isRunning = true;
 
+    if(!initializeBall())
+        return false;
+
+    return true;
+}
+
+bool GameClass::initializeBall() {
+    int ballPositionX = 0;
+    int ballPositionY = 0;
+    if(SDL_GetRendererOutputSize(renderer, &ballPositionX, &ballPositionY) < 0) {
+        return false;
+    }
+    ballPositionX /= 2;
+    ballPositionY /= 2;
+    ball = new Ball(ballPositionX, ballPositionY, 20, 20);
     return true;
 }
 
@@ -48,9 +63,19 @@ void GameClass::handleEvents() {
     }
 }
 
+void GameClass::render() const {
+    SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
+    SDL_RenderClear(renderer);
+
+    ball->draw(renderer);
+
+    SDL_RenderPresent(renderer);
+}
+
 void GameClass::run() {
     while(isRunning) {
         handleEvents();
+        render();
     }
 }
 

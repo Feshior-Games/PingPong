@@ -8,13 +8,19 @@
 #include <SDL_video.h>
 #include <string>
 
+#include "Ball.h"
+
 class GameClass {
 private:
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
     bool isRunning = false;
+    Ball* ball = nullptr;
+
 private:
     void handleEvents();
+    void render() const;
+    bool initializeBall();
 public:
     GameClass();
     ~GameClass();
