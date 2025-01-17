@@ -11,18 +11,17 @@
 
 class Ball : public RenderableObject{
 private:
-    int x;
-    int y;
     int width;
     int height;
     SDL_Rect collision;
     SDL_Texture* texture;
-    float velocity = 0;
+    float velocity = 10;
     float angle = 0;
 
 public:
     Ball(int x, int y, int width, int height, SDL_Renderer* renderer, const char* texturePath = "assets/ball.png");
     void draw(SDL_Renderer* renderer) const;
+    void update(float deltaTime);
     [[nodiscard]] SDL_Rect getBallReact() const;
 };
 

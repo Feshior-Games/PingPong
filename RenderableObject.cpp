@@ -2,6 +2,8 @@
 // Created by vladyslav on 1/17/25.
 //
 #include "RenderableObject.h"
+
+#include <iostream>
 #include <SDL_image.h>
 
 RenderableObject::RenderableObject(SDL_Renderer* renderer, const int x, const int y, const int w, const int h,
@@ -17,6 +19,12 @@ bool RenderableObject::render() const {
         return true;
     }
     return false;
+}
+
+void RenderableObject::setPosition(const int x, const int y) {
+    std::cout << x <<std::endl;
+    std::cout << y <<std::endl;
+    rect = SDL_Rect{x, y, rect.w, rect.h};
 }
 
 

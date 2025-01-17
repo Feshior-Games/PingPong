@@ -7,9 +7,7 @@
 #include <SDL_render.h>
 #include <SDL_video.h>
 #include <string>
-
 #include "Ball.h"
-#include "RenderableObject.h"
 
 class GameClass{
 private:
@@ -17,10 +15,13 @@ private:
     SDL_Renderer* renderer = nullptr;
     bool isRunning = false;
     Ball* ball = nullptr;
+    float deltaTime = 0.0f;
+    Uint32 lastFrameTime = 0;
 
 private:
     void handleEvents();
     bool render() const;
+    void update();
     bool initializeBall();
 public:
     GameClass();

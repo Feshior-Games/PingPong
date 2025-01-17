@@ -78,9 +78,17 @@ bool GameClass::render() const {
     return true;
 }
 
+void GameClass::update() {
+    Uint32 currentFrameTime = SDL_GetTicks();
+    deltaTime = (currentFrameTime - lastFrameTime) / 1000.0f;
+    lastFrameTime = currentFrameTime;
+    ball->update(deltaTime);
+}
+
 void GameClass::run() {
     while(isRunning) {
         handleEvents();
+        update();
         if(!render()) {
             std::cout << "Render has failed!; Stopping application;" <<std::endl;
             isRunning = false;
