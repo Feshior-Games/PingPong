@@ -2,6 +2,8 @@
 // Created by vladyslav on 1/16/25.
 //
 #include "GameClass.h"
+
+#include <iostream>
 #include <SDL.h>
 #include <SDL_image.h>
 
@@ -51,7 +53,7 @@ bool GameClass::initializeBall() {
     }
     ballPositionX /= 2;
     ballPositionY /= 2;
-    ball = new Ball(ballPositionX, ballPositionY, 20, 20);
+    ball = new Ball(ballPositionX, ballPositionY, 200, 200, renderer, "assets/ball.png");
     return true;
 }
 
@@ -63,19 +65,26 @@ void GameClass::handleEvents() {
     }
 }
 
-void GameClass::render() const {
+bool GameClass::render() const {
     SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
     SDL_RenderClear(renderer);
 
-    ball->draw(renderer);
+    if(!ball->render()) {
+        std::cout << SDL_GetError() << std::endl;
+        return false;
+    }
 
     SDL_RenderPresent(renderer);
+    return true;
 }
 
 void GameClass::run() {
     while(isRunning) {
         handleEvents();
-        render();
+        if(!render()) {
+            std::cout << "Render has failed!; Stopping application;" <<std::endl;
+            isRunning = false;
+        }
     }
 }
 

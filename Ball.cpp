@@ -4,8 +4,12 @@
 
 #include "Ball.h"
 
-Ball::Ball(const int x, const int y, const int width, const int height) : x(x), y(y), width(width), height(height) {
-    collision = SDL_Rect{x,y,width,height};
+#include <SDL_image.h>
+
+Ball::Ball(const int x, const int y, const int width, const int height, SDL_Renderer* renderer, const char* textureFilePath)
+: RenderableObject(renderer, x,y,width,height,textureFilePath),
+    x(x), y(y), width(width), height(height) {
+    collision = SDL_Rect{x, y, width, height};
 }
 
 void Ball::draw(SDL_Renderer *renderer) const {

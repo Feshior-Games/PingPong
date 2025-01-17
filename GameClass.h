@@ -9,8 +9,9 @@
 #include <string>
 
 #include "Ball.h"
+#include "RenderableObject.h"
 
-class GameClass {
+class GameClass{
 private:
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
@@ -19,7 +20,7 @@ private:
 
 private:
     void handleEvents();
-    void render() const;
+    bool render() const;
     bool initializeBall();
 public:
     GameClass();

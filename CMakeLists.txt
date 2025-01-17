@@ -10,6 +10,13 @@ add_executable(pingpong main.cpp
         GameClass.cpp
         GameClass.h
         Ball.cpp
-        Ball.h)
+        Ball.h
+        RenderableObject.h
+        RenderableObject.cpp)
 
 target_link_libraries(pingpong PRIVATE SDL2::SDL2 SDL2::SDL2main SDL2_image::SDL2_image)
+
+
+set(ASSETS_FOLDER "${CMAKE_SOURCE_DIR}/assets")
+set(ASSETS_DEST "${CMAKE_BINARY_DIR}/")
+file(COPY ${ASSETS_FOLDER} DESTINATION ${ASSETS_DEST})
