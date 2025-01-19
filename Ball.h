@@ -15,7 +15,7 @@ private:
     int height;
     SDL_Rect collision;
     SDL_Texture* texture;
-    float velocity = 10;
+    float velocity = 0;
     float angle = 0;
 
 public:
@@ -23,6 +23,7 @@ public:
     void draw(SDL_Renderer* renderer) const;
     void update(float deltaTime);
     [[nodiscard]] SDL_Rect getBallReact() const;
+    void setVelocity(float velocity);
 };
 
 

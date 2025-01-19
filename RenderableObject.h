@@ -28,6 +28,8 @@ public:
         }
     }
 
+    void getRendererBoundaries(int& screenWidth, int& screenHeight) const;
+    [[nodiscard]]
     bool render() const;
     [[nodiscard]] SDL_Rect getBoundariesRect() const { return rect; }
 };

@@ -62,6 +62,21 @@ void GameClass::handleEvents() {
     while(SDL_PollEvent(&event)) {
         if(event.type == SDL_QUIT)
             isRunning = false;
+        if(event.type == SDL_KEYDOWN) {
+            switch(event.key.keysym.sym) {
+                case SDLK_a:
+                    ball->setVelocity(-10);
+                    break;
+                case SDLK_s:
+                    ball->setVelocity(10);
+                    break;
+                case SDLK_d:
+                    ball->setVelocity(0);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
 

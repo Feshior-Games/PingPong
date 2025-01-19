@@ -21,9 +21,14 @@ bool RenderableObject::render() const {
     return false;
 }
 
+void RenderableObject::getRendererBoundaries(int &screenWidth, int &screenHeight) const {
+    SDL_GetRendererOutputSize(renderer, &screenWidth, &screenHeight);
+}
+
+
 void RenderableObject::setPosition(const int x, const int y) {
-    std::cout << x <<std::endl;
-    std::cout << y <<std::endl;
+    // std::cout << x <<std::endl;
+    // std::cout << y <<std::endl;
     rect = SDL_Rect{x, y, rect.w, rect.h};
 }
 
